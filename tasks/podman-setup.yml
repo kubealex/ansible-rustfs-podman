@@ -47,7 +47,7 @@
         - rustfs_configure_ssl
       ansible.builtin.file:
         state: directory
-        path: ./certs/CAs
+        path: ./certs
         mode: "0775"
         recurse: true
 
@@ -60,11 +60,9 @@
         mode: "0775"
       loop:
         - source: "{{ rustfs_cert_path }}"
-          dest: public.pem
+          dest: rustfs_cert.pem
         - source: "{{ rustfs_key_path }}"
-          dest: private.key
-        - source: "{{ rustfs_ca_path }}"
-          dest: ca.pem
+          dest: rustfs_key.pem
 
 - name: RustFS Setup | Create rustfs container
   containers.podman.podman_container:
