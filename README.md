@@ -17,6 +17,7 @@ Role Variables
 | rustfs_cert_path       | Path for RustFS certificate                        |               |
 | rustfs_key_path        | Path for RustFS key                                |               |
 | rustfs_ca_path        | Path for RustFS CA                                |               |
+| rustfs_console_enable        | Enable RustFS Console                               | true              |
 
 Dependencies
 ------------

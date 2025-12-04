@@ -83,7 +83,7 @@
     env:
       RUSTFS_ACCESS_KEY: "{{ rustfs_root_user | default('rustfsadmin', true) }}"
       RUSTFS_SECRET_KEY: "{{ rustfs_root_password | default('rustfsadmin', true) }}"
-      RUSTFS_CONSOLE_ENABLE: "{{ rustfs_console_port | default(true, true) }}"
+      RUSTFS_CONSOLE_ENABLE: "{{ rustfs_console_enable | default(true, true) }}"
       RUSTFS_SERVER_DOMAINS: "{{ rustfs_server_domain | default(omit, true) }}"
       RUSTFS_TLS_PATH: "{{ rustfs_tls_path | default('/certs', true ) }}"
       RUSTFS_CONSOLE_ADDRESS: "0.0.0.0:{{ rustfs_console_port }}"
