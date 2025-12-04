@@ -3,7 +3,6 @@
     msg: "You need to specifcy the path to certificate and key to use"
   when:
     - rustfs_configure_ssl
-    - rustfs_generate_certs
     - rustfs_cert_path is not defined or rustfs_cert_path == ""
     - rustfs_key_path is not defined or rustfs_key_path == ""
 
@@ -55,7 +54,6 @@
     - name: RustFS Setup | Configure certs for https
       when:
         - rustfs_configure_ssl
-        - not rustfs_generate_certs
       ansible.builtin.copy:
         src: "{{ item.source }}"
         dest: ./certs/{{ item.dest }}
