@@ -1,0 +1,22 @@
+- name: RustFS Setup | Check if firewalld is running
+  ansible.builtin.service_facts:
+  become: true
+
+- name: RustFS Setup | Configure firewalld if running
+  block:
+    - name: RustFS Setup | Ensure firewalld is configured to accept traffic
+      ansible.posix.firewalld:
+        port: "{{ item }}"
+        state: enabled
+        permanent: true
+      loop:
+        - "{{ rustfs_api_port | default(9000, true) }}/tcp"
+        - "{{ rustfs_console_port | default(9090, true) }}/tcp"
+
+    - name: RustFS Setup | Ensure firewalld is started
+      ansible.builtin.service:
+        name: firewalld
+        state: restarted
+        enabled: true
+  when: ansible_facts.services["firewalld.service"] is defined
+  become: true
