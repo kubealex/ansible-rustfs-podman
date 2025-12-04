@@ -84,4 +84,4 @@
       RUSTFS_CONSOLE_ENABLE: "{{ rustfs_console_enable | default(true, true) }}"
       RUSTFS_SERVER_DOMAINS: "{{ rustfs_server_domain | default(omit, true) }}"
       RUSTFS_TLS_PATH: "{{ rustfs_tls_path | default('/certs', true ) }}"
-      RUSTFS_CONSOLE_ADDRESS: "0.0.0.0:{{ rustfs_console_port }}"
+      RUSTFS_CONSOLE_ADDRESS: "0.0.0.0:{{ rustfs_console_port | default(9001, true) }}"
